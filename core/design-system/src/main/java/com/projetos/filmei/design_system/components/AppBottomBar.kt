@@ -1,13 +1,20 @@
-package giovanni.projetos.com.designsystem.components
+package com.projetos.filmei.design_system.components
 
-import androidx.compose.material3.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Home
+import androidx.compose.material.icons.outlined.Notifications
+import androidx.compose.material.icons.outlined.Person
+import androidx.compose.material.icons.outlined.Search
+import androidx.compose.material3.Badge
+import androidx.compose.material3.BadgedBox
+import androidx.compose.material3.Icon
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.*
-import giovanni.projetos.com.designsystem.theme.AppTheme
 
 data class AppBottomBarItem(
     val label: String,
@@ -44,9 +51,9 @@ fun AppBottomBar(
             val isSelected = item.route == currentRoute
             NavigationBarItem(
                 selected = isSelected,
-                onClick  = { onItemClick(item) },
-                label    = { Text(item.label) },
-                icon     = {
+                onClick = { onItemClick(item) },
+                label = { Text(item.label) },
+                icon = {
                     if (item.badgeCount != null && item.badgeCount > 0) {
                         BadgedBox(
                             badge = {
@@ -75,21 +82,20 @@ fun AppBottomBar(
 @Preview(showBackground = true)
 @Composable
 private fun AppBottomBarPreview() {
-    AppTheme {
-        AppBottomBar(
-            items = listOf(
-                AppBottomBarItem("Home", Icons.Outlined.Home, route = "home"),
-                AppBottomBarItem("Buscar", Icons.Outlined.Search, route = "search"),
-                AppBottomBarItem(
-                    "Avisos",
-                    Icons.Outlined.Notifications,
-                    route = "notifs",
-                    badgeCount = 3
-                ),
-                AppBottomBarItem("Perfil", Icons.Outlined.Person, route = "profile"),
+    AppBottomBar(
+        items = listOf(
+            AppBottomBarItem("Home", Icons.Outlined.Home, route = "home"),
+            AppBottomBarItem("Buscar", Icons.Outlined.Search, route = "search"),
+            AppBottomBarItem(
+                "Avisos",
+                Icons.Outlined.Notifications,
+                route = "notifs",
+                badgeCount = 3
             ),
-            currentRoute = "home",
-            onItemClick = {},
-        )
-    }
+            AppBottomBarItem("Perfil", Icons.Outlined.Person, route = "profile"),
+        ),
+        currentRoute = "home",
+        onItemClick = {},
+    )
+
 }

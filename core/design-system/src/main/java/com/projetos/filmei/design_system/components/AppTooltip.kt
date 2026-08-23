@@ -1,12 +1,19 @@
-package giovanni.projetos.com.designsystem.components
+package com.projetos.filmei.design_system.components
 
-import androidx.compose.material3.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Info
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.PlainTooltip
+import androidx.compose.material3.RichTooltip
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
+import androidx.compose.material3.TooltipBox
+import androidx.compose.material3.TooltipDefaults
+import androidx.compose.material3.rememberTooltipState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Info
-import giovanni.projetos.com.designsystem.theme.AppTheme
 
 /**
  * Tooltip simples sobre um ícone de informação (ou qualquer conteúdo).
@@ -28,7 +35,7 @@ fun AppTooltip(
         tooltip = {
             PlainTooltip { Text(tooltip) }
         },
-        state   = rememberTooltipState(),
+        state = rememberTooltipState(),
         modifier = modifier,
         content = content,
     )
@@ -62,7 +69,7 @@ fun AppRichTooltip(
         positionProvider = TooltipDefaults.rememberRichTooltipPositionProvider(),
         tooltip = {
             RichTooltip(
-                title  = { Text(title) },
+                title = { Text(title) },
                 action = if (actionLabel != null && onAction != null) {
                     {
                         TextButton(onClick = onAction) { Text(actionLabel) }
@@ -72,9 +79,9 @@ fun AppRichTooltip(
                 Text(tooltip)
             }
         },
-        state    = tooltipState,
+        state = tooltipState,
         modifier = modifier,
-        content  = content,
+        content = content,
     )
 }
 
@@ -83,9 +90,7 @@ fun AppRichTooltip(
 @Preview(showBackground = true)
 @Composable
 private fun AppTooltipPreview() {
-    AppTheme {
-        AppTooltip(tooltip = "Informação adicional sobre este campo") {
-            Icon(Icons.Outlined.Info, contentDescription = "Ajuda")
-        }
+    AppTooltip(tooltip = "Informação adicional sobre este campo") {
+        Icon(Icons.Outlined.Info, contentDescription = "Ajuda")
     }
 }

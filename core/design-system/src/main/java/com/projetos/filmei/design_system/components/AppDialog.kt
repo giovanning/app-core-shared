@@ -1,13 +1,18 @@
-package giovanni.projetos.com.designsystem.components
+package com.projetos.filmei.design_system.components
 
-import androidx.compose.foundation.layout.*
-import androidx.compose.material3.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.DialogProperties
-import giovanni.projetos.com.designsystem.theme.AppTheme
 
 /**
  * Diálogo de confirmação padrão.
@@ -105,13 +110,12 @@ fun AppCustomDialog(
 @Preview
 @Composable
 private fun AppConfirmDialogPreview() {
-    AppTheme {
-        AppConfirmDialog(
-            title = "Excluir item?",
-            message = "Esta ação não pode ser desfeita.",
-            isDestructive = true,
-            onConfirm = {},
-            onDismiss = {},
-        )
-    }
+    AppConfirmDialog(
+        title = "Excluir item?",
+        message = "Esta ação não pode ser desfeita.",
+        isDestructive = true,
+        onConfirm = {},
+        onDismiss = {},
+    )
+
 }

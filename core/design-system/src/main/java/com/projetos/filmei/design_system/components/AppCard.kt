@@ -1,14 +1,22 @@
-package giovanni.projetos.com.designsystem.components
+package com.projetos.filmei.design_system.components
 
-import androidx.compose.foundation.layout.*
-import androidx.compose.material3.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import giovanni.projetos.com.designsystem.theme.AppTheme
 
 /**
  * Card padrão — surface com elevação, shape e padding configuráveis.
@@ -87,26 +95,24 @@ fun AppSectionCard(
 @Preview(showBackground = true)
 @Composable
 private fun AppCardPreview() {
-    AppTheme {
-        Column(
-            modifier = Modifier.padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(12.dp),
-        ) {
-            AppCard {
-                Text("Card simples", style = MaterialTheme.typography.titleMedium)
-                Text("Subtítulo aqui", style = MaterialTheme.typography.bodySmall)
-            }
-            AppCard(onClick = {}) {
-                Text("Card clicável", style = MaterialTheme.typography.titleMedium)
-            }
-            AppSectionCard(header = {
-                Text(
-                    "Seção",
-                    style = MaterialTheme.typography.titleSmall
-                )
-            }) {
-                Text("Conteúdo da seção")
-            }
+    Column(
+        modifier = Modifier.padding(16.dp),
+        verticalArrangement = Arrangement.spacedBy(12.dp),
+    ) {
+        AppCard {
+            Text("Card simples", style = MaterialTheme.typography.titleMedium)
+            Text("Subtítulo aqui", style = MaterialTheme.typography.bodySmall)
+        }
+        AppCard(onClick = {}) {
+            Text("Card clicável", style = MaterialTheme.typography.titleMedium)
+        }
+        AppSectionCard(header = {
+            Text(
+                "Seção",
+                style = MaterialTheme.typography.titleSmall
+            )
+        }) {
+            Text("Conteúdo da seção")
         }
     }
 }

@@ -1,4 +1,4 @@
-package giovanni.projetos.com.designsystem.components
+package com.projetos.filmei.design_system.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -16,7 +16,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import giovanni.projetos.com.designsystem.theme.AppTheme
 
 // ─── Checkbox ─────────────────────────────────────────────────────────────────
 
@@ -42,20 +41,20 @@ fun AppCheckbox(
         modifier = modifier
             .clickable(
                 enabled = enabled,
-                role    = Role.Checkbox,
+                role = Role.Checkbox,
                 onClick = { onCheckedChange(!checked) },
             )
             .padding(vertical = 4.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Checkbox(
-            checked         = checked,
+            checked = checked,
             onCheckedChange = onCheckedChange,
-            enabled         = enabled,
+            enabled = enabled,
         )
         Spacer(Modifier.width(8.dp))
         Text(
-            text  = label,
+            text = label,
             style = MaterialTheme.typography.bodyLarge,
             color = if (enabled) MaterialTheme.colorScheme.onSurface
             else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.38f),
@@ -66,13 +65,11 @@ fun AppCheckbox(
 @Preview(showBackground = true)
 @Composable
 private fun AppToggleControlsPreview() {
-    AppTheme {
-        Column(
-            modifier = Modifier.padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(4.dp)
-        ) {
-            AppCheckbox("Aceito os termos de uso", checked = true, onCheckedChange = {})
-            AppCheckbox("Receber newsletter", checked = false, onCheckedChange = {})
-        }
+    Column(
+        modifier = Modifier.padding(16.dp),
+        verticalArrangement = Arrangement.spacedBy(4.dp)
+    ) {
+        AppCheckbox("Aceito os termos de uso", checked = true, onCheckedChange = {})
+        AppCheckbox("Receber newsletter", checked = false, onCheckedChange = {})
     }
 }

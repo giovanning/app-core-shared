@@ -1,4 +1,4 @@
-package giovanni.projetos.com.designsystem.components
+package com.projetos.filmei.design_system.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -16,7 +16,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import giovanni.projetos.com.designsystem.theme.AppTheme
 
 /**
  * RadioButton com label clicável.
@@ -40,7 +39,7 @@ fun AppRadioButton(
         modifier = modifier
             .clickable(
                 enabled = enabled,
-                role    = Role.RadioButton,
+                role = Role.RadioButton,
                 onClick = onClick,
             )
             .padding(vertical = 4.dp),
@@ -48,12 +47,12 @@ fun AppRadioButton(
     ) {
         RadioButton(
             selected = selected,
-            onClick  = onClick,
-            enabled  = enabled,
+            onClick = onClick,
+            enabled = enabled,
         )
         Spacer(Modifier.width(8.dp))
         Text(
-            text  = label,
+            text = label,
             style = MaterialTheme.typography.bodyLarge,
             color = if (enabled) MaterialTheme.colorScheme.onSurface
             else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.38f),
@@ -66,14 +65,13 @@ fun AppRadioButton(
 @Preview(showBackground = true)
 @Composable
 private fun AppToggleControlsPreview() {
-    AppTheme {
-        Column(
-            modifier = Modifier.padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(4.dp)
-        ) {
-            AppRadioButton("Claro", selected = true, onClick = {})
-            AppRadioButton("Escuro", selected = false, onClick = {})
-            AppRadioButton("Sistema", selected = false, onClick = {})
-        }
+    Column(
+        modifier = Modifier.padding(16.dp),
+        verticalArrangement = Arrangement.spacedBy(4.dp)
+    ) {
+        AppRadioButton("Claro", selected = true, onClick = {})
+        AppRadioButton("Escuro", selected = false, onClick = {})
+        AppRadioButton("Sistema", selected = false, onClick = {})
     }
+
 }

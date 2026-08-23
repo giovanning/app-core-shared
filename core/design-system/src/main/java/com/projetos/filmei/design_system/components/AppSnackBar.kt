@@ -1,10 +1,14 @@
-package giovanni.projetos.com.designsystem.components
+package com.projetos.filmei.design_system.components
 
-import androidx.compose.material3.*
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Snackbar
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import giovanni.projetos.com.designsystem.theme.AppTheme
 
 // ─── Tipos de snackbar ────────────────────────────────────────────────────────
 
@@ -37,8 +41,8 @@ fun AppSnackbarHost(
 ) {
     SnackbarHost(
         hostState = hostState,
-        modifier  = modifier,
-        snackbar  = { data ->
+        modifier = modifier,
+        snackbar = { data ->
             Snackbar(
                 snackbarData = data,
                 shape = MaterialTheme.shapes.medium,
@@ -52,11 +56,10 @@ fun AppSnackbarHost(
 @Preview(showBackground = true)
 @Composable
 private fun AppSnackbarPreview() {
-    AppTheme {
-        Snackbar(
-            action = { TextButton(onClick = {}) { Text("Desfazer") } },
-        ) {
-            Text("Nota salva com sucesso")
-        }
+    Snackbar(
+        action = { TextButton(onClick = {}) { Text("Desfazer") } },
+    ) {
+        Text("Nota salva com sucesso")
     }
+
 }

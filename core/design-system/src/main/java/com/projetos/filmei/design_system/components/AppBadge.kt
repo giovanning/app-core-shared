@@ -1,14 +1,19 @@
-package giovanni.projetos.com.designsystem.components
+package com.projetos.filmei.design_system.components
 
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.BoxScope
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Notifications
-import androidx.compose.material3.*
+import androidx.compose.material3.Badge
+import androidx.compose.material3.BadgedBox
+import androidx.compose.material3.Icon
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import giovanni.projetos.com.designsystem.theme.AppTheme
 
 /**
  * Badge numérico ou ponto indicador sobre um ícone.
@@ -47,20 +52,19 @@ fun AppBadge(
 @Preview(showBackground = true)
 @Composable
 private fun AppBadgePreview() {
-    AppTheme {
-        Row(
-            modifier = Modifier.padding(24.dp),
-            horizontalArrangement = Arrangement.spacedBy(24.dp),
-        ) {
-            AppBadge(count = 3) {
-                Icon(Icons.Outlined.Notifications, contentDescription = null)
-            }
-            AppBadge(count = 127) {
-                Icon(Icons.Outlined.Notifications, contentDescription = null)
-            }
-            AppBadge {
-                Icon(Icons.Outlined.Notifications, contentDescription = null)
-            }
+    Row(
+        modifier = Modifier.padding(24.dp),
+        horizontalArrangement = Arrangement.spacedBy(24.dp),
+    ) {
+        AppBadge(count = 3) {
+            Icon(Icons.Outlined.Notifications, contentDescription = null)
+        }
+        AppBadge(count = 127) {
+            Icon(Icons.Outlined.Notifications, contentDescription = null)
+        }
+        AppBadge {
+            Icon(Icons.Outlined.Notifications, contentDescription = null)
         }
     }
+
 }

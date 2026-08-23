@@ -1,4 +1,4 @@
-package giovanni.projetos.com.designsystem.components
+package com.projetos.filmei.design_system.components
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.outlined.ArrowBack
@@ -8,7 +8,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
-import giovanni.projetos.com.designsystem.theme.AppTheme
 
 data class AppTopBarAction(
     val icon: ImageVector,
@@ -80,7 +79,6 @@ fun AppTopBar(
 @Preview(showBackground = true)
 @Composable
 private fun AppTopBarPreview() {
-    AppTheme {
         AppTopBar(
             title = "Detalhes",
             subtitle = "Última edição: hoje",
@@ -89,5 +87,5 @@ private fun AppTopBarPreview() {
                 AppTopBarAction(Icons.Outlined.MoreVert, "Mais opções") {}
             )
         )
-    }
+
 }

@@ -1,7 +1,18 @@
-package giovanni.projetos.com.designsystem.components
+package com.projetos.filmei.design_system.components
 
-import androidx.compose.foundation.layout.*
-import androidx.compose.material3.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -9,7 +20,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import giovanni.projetos.com.designsystem.theme.AppTheme
 
 /**
  * Divisor horizontal com espessura e cor configuráveis.
@@ -22,9 +32,9 @@ fun AppDivider(
     indent: Dp = 0.dp,
 ) {
     HorizontalDivider(
-        modifier  = modifier.padding(horizontal = indent),
+        modifier = modifier.padding(horizontal = indent),
         thickness = thickness,
-        color     = color,
+        color = color,
     )
 }
 
@@ -38,9 +48,9 @@ fun AppVerticalDivider(
     color: Color = MaterialTheme.colorScheme.outlineVariant,
 ) {
     VerticalDivider(
-        modifier  = modifier,
+        modifier = modifier,
         thickness = thickness,
-        color     = color,
+        color = color,
     )
 }
 
@@ -57,15 +67,15 @@ fun AppLabeledDivider(
     color: Color = MaterialTheme.colorScheme.outlineVariant,
 ) {
     Row(
-        modifier          = modifier.fillMaxWidth(),
+        modifier = modifier.fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         HorizontalDivider(modifier = Modifier.weight(1f), color = color)
         Text(
-            text     = label,
+            text = label,
             modifier = Modifier.padding(horizontal = 16.dp),
-            style    = MaterialTheme.typography.bodySmall,
-            color    = MaterialTheme.colorScheme.onSurfaceVariant,
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
         HorizontalDivider(modifier = Modifier.weight(1f), color = color)
     }
@@ -76,21 +86,19 @@ fun AppLabeledDivider(
 @Preview(showBackground = true)
 @Composable
 private fun AppDividerPreview() {
-    AppTheme {
-        Column(
-            modifier = Modifier.padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(12.dp)
-        ) {
-            AppDivider()
-            AppDivider(indent = 16.dp)
-            AppLabeledDivider(label = "ou")
-            Row(modifier = Modifier.height(40.dp), verticalAlignment = Alignment.CenterVertically) {
-                Text("Item A")
-                Spacer(Modifier.width(8.dp))
-                AppVerticalDivider(modifier = Modifier.fillMaxHeight())
-                Spacer(Modifier.width(8.dp))
-                Text("Item B")
-            }
+    Column(
+        modifier = Modifier.padding(16.dp),
+        verticalArrangement = Arrangement.spacedBy(12.dp)
+    ) {
+        AppDivider()
+        AppDivider(indent = 16.dp)
+        AppLabeledDivider(label = "ou")
+        Row(modifier = Modifier.height(40.dp), verticalAlignment = Alignment.CenterVertically) {
+            Text("Item A")
+            Spacer(Modifier.width(8.dp))
+            AppVerticalDivider(modifier = Modifier.fillMaxHeight())
+            Spacer(Modifier.width(8.dp))
+            Text("Item B")
         }
     }
 }

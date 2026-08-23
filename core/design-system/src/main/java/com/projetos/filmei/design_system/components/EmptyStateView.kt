@@ -20,11 +20,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import giovanni.projetos.com.designsystem.icons.SIGOLDIcons
-import giovanni.projetos.com.designsystem.icons.SIGOLDIcons.Inbox
-import giovanni.projetos.com.designsystem.icons.SIGOLDIcons.SearchOff
-import giovanni.projetos.com.designsystem.icons.SIGOLDIcons.WifiOff
-import giovanni.projetos.com.designsystem.theme.AppTheme
+import com.projetos.filmei.design_system.icons.AppIcons
+import com.projetos.filmei.design_system.icons.AppIcons.Inbox
+import com.projetos.filmei.design_system.icons.AppIcons.SearchOff
+import com.projetos.filmei.design_system.icons.AppIcons.WifiOff
 
 /**
  * Estado vazio, erro ou ausência de conteúdo.
@@ -135,7 +134,7 @@ fun NetworkErrorView(onRetry: () -> Unit, modifier: Modifier = Modifier) =
 @Composable
 fun GenericErrorView(onRetry: () -> Unit, modifier: Modifier = Modifier) =
     EmptyStateView(
-        icon = SIGOLDIcons.Error,
+        icon = AppIcons.Error,
         title = "Algo deu errado",
         description = "Ocorreu um erro inesperado.",
         primaryActionLabel = "Tentar novamente",
@@ -148,5 +147,5 @@ fun GenericErrorView(onRetry: () -> Unit, modifier: Modifier = Modifier) =
 @Preview(showBackground = true)
 @Composable
 private fun EmptyStateViewPreview() {
-    AppTheme { NetworkErrorView(onRetry = {}) }
+    NetworkErrorView(onRetry = {})
 }

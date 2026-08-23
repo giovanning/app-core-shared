@@ -1,17 +1,30 @@
-package giovanni.projetos.com.designsystem.components
+package com.projetos.filmei.design_system.components
 
-import androidx.compose.foundation.layout.*
-import androidx.compose.material3.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Delete
+import androidx.compose.material.icons.outlined.Share
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Icon
+import androidx.compose.material3.ListItem
+import androidx.compose.material3.ListItemDefaults
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.ModalBottomSheet
+import androidx.compose.material3.SheetState
+import androidx.compose.material3.Text
+import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Delete
-import androidx.compose.material.icons.outlined.Share
-import giovanni.projetos.com.designsystem.theme.AppTheme
 
 /**
  * BottomSheet modal padrão com conteúdo customizável via slot.
@@ -135,18 +148,17 @@ fun AppActionsBottomSheet(
 @Preview
 @Composable
 private fun AppActionsBottomSheetPreview() {
-    AppTheme {
-        AppActionsBottomSheet(
-            title = "Nota",
-            actions = listOf(
-                BottomSheetAction("Compartilhar", Icons.Outlined.Share, onClick = {}),
-                BottomSheetAction(
-                    "Excluir",
-                    Icons.Outlined.Delete,
-                    isDestructive = true,
-                    onClick = {}),
-            ),
-            onDismiss = {},
-        )
-    }
+    AppActionsBottomSheet(
+        title = "Nota",
+        actions = listOf(
+            BottomSheetAction("Compartilhar", Icons.Outlined.Share, onClick = {}),
+            BottomSheetAction(
+                "Excluir",
+                Icons.Outlined.Delete,
+                isDestructive = true,
+                onClick = {}),
+        ),
+        onDismiss = {},
+    )
+
 }

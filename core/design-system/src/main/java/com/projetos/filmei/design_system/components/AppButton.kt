@@ -1,15 +1,30 @@
-package giovanni.projetos.com.designsystem.components
+package com.projetos.filmei.design_system.components
 
-import androidx.compose.foundation.layout.*
-import androidx.compose.material3.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Add
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.FilledTonalButton
+import androidx.compose.material3.Icon
+import androidx.compose.material3.LocalContentColor
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Add
-import giovanni.projetos.com.designsystem.theme.AppTheme
 
 // ─── Variantes ────────────────────────────────────────────────────────────────
 
@@ -66,31 +81,35 @@ fun AppButton(
             enabled = isEnabled,
             content = content,
         )
+
         AppButtonVariant.Secondary -> FilledTonalButton(
             onClick = onClick,
             modifier = modifier.height(48.dp),
             enabled = isEnabled,
             content = content,
         )
+
         AppButtonVariant.Outlined -> OutlinedButton(
             onClick = onClick,
             modifier = modifier.height(48.dp),
             enabled = isEnabled,
             content = content,
         )
+
         AppButtonVariant.Text -> TextButton(
             onClick = onClick,
             modifier = modifier.height(48.dp),
             enabled = isEnabled,
             content = content,
         )
+
         AppButtonVariant.Destructive -> Button(
             onClick = onClick,
             modifier = modifier.height(48.dp),
             enabled = isEnabled,
             colors = ButtonDefaults.buttonColors(
                 containerColor = MaterialTheme.colorScheme.error,
-                contentColor   = MaterialTheme.colorScheme.onError,
+                contentColor = MaterialTheme.colorScheme.onError,
             ),
             content = content,
         )
@@ -102,18 +121,17 @@ fun AppButton(
 @Preview(showBackground = true)
 @Composable
 private fun AppButtonPreview() {
-    AppTheme {
-        Column(
-            modifier = Modifier.padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(8.dp),
-        ) {
-            AppButton("Primary", onClick = {})
-            AppButton("Secondary", onClick = {}, variant = AppButtonVariant.Secondary)
-            AppButton("Outlined", onClick = {}, variant = AppButtonVariant.Outlined)
-            AppButton("Text", onClick = {}, variant = AppButtonVariant.Text)
-            AppButton("Destructive", onClick = {}, variant = AppButtonVariant.Destructive)
-            AppButton("Loading", onClick = {}, isLoading = true)
-            AppButton("Com ícone", onClick = {}, leadingIcon = Icons.Outlined.Add)
-        }
+    Column(
+        modifier = Modifier.padding(16.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp),
+    ) {
+        AppButton("Primary", onClick = {})
+        AppButton("Secondary", onClick = {}, variant = AppButtonVariant.Secondary)
+        AppButton("Outlined", onClick = {}, variant = AppButtonVariant.Outlined)
+        AppButton("Text", onClick = {}, variant = AppButtonVariant.Text)
+        AppButton("Destructive", onClick = {}, variant = AppButtonVariant.Destructive)
+        AppButton("Loading", onClick = {}, isLoading = true)
+        AppButton("Com ícone", onClick = {}, leadingIcon = Icons.Outlined.Add)
     }
+
 }

@@ -1,17 +1,28 @@
-package giovanni.projetos.com.designsystem.components
+package com.projetos.filmei.design_system.components
 
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.text.input.*
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import giovanni.projetos.com.designsystem.icons.SIGOLDIcons
-import giovanni.projetos.com.designsystem.theme.AppTheme
+import com.projetos.filmei.design_system.icons.AppIcons
 
 /**
  * Campo de texto padrão com suporte a label, erro, ícones,
@@ -66,7 +77,7 @@ fun AppTextField(
 
     val visualTransformation = when {
         isPassword && !passwordVisible -> PasswordVisualTransformation()
-        else                           -> VisualTransformation.None
+        else -> VisualTransformation.None
     }
 
     val resolvedTrailingIcon: (@Composable () -> Unit)? = when {
@@ -75,12 +86,13 @@ fun AppTextField(
                 IconButton(onClick = { passwordVisible = !passwordVisible }) {
                     Icon(
                         imageVector = if (passwordVisible)
-                            SIGOLDIcons.Visibility else SIGOLDIcons.VisibilityOff,
+                            AppIcons.Visibility else AppIcons.VisibilityOff,
                         contentDescription = if (passwordVisible) "Ocultar senha" else "Mostrar senha",
                     )
                 }
             }
         }
+
         trailingIcon != null -> {
             {
                 if (onTrailingIconClick != null) {
@@ -92,6 +104,7 @@ fun AppTextField(
                 }
             }
         }
+
         else -> null
     }
 
@@ -106,14 +119,33 @@ fun AppTextField(
             modifier = Modifier.fillMaxWidth(),
             label = label?.let { { Text(it) } },
             placeholder = placeholder?.let { { Text(it) } },
-            leadingIcon = leadingIcon?.let { { Icon(imageVector = it, contentDescription = null) } },
+            leadingIcon = leadingIcon?.let {
+                {
+                    Icon(
+                        imageVector = it,
+                        contentDescription = null
+                    )
+                }
+            },
             trailingIcon = resolvedTrailingIcon,
             supportingText = when {
-                error != null   -> { { Text(error, color = MaterialTheme.colorScheme.error) } }
-                supportingText != null -> { { Text(supportingText) } }
-                showCharCounter && maxLength != null -> {
-                    { Text("${value.length} / $maxLength", style = MaterialTheme.typography.labelSmall) }
+                error != null -> {
+                    { Text(error, color = MaterialTheme.colorScheme.error) }
                 }
+
+                supportingText != null -> {
+                    { Text(supportingText) }
+                }
+
+                showCharCounter && maxLength != null -> {
+                    {
+                        Text(
+                            "${value.length} / $maxLength",
+                            style = MaterialTheme.typography.labelSmall
+                        )
+                    }
+                }
+
                 else -> null
             },
             isError = error != null,
@@ -134,29 +166,28 @@ fun AppTextField(
 @Preview(showBackground = true)
 @Composable
 private fun AppTextFieldPreview() {
-    AppTheme {
-        Column(
-            modifier = Modifier.padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(8.dp),
-        ) {
-            AppTextField(value = "", onValueChange = {}, label = "E-mail")
-            AppTextField(value = "texto preenchido", onValueChange = {}, label = "Nome")
-            AppTextField(
-                value = "",
-                onValueChange = {},
-                label = "E-mail",
-                error = "E-mail inválido"
-            )
-            AppTextField(value = "••••••", onValueChange = {}, label = "Senha", isPassword = true)
-            AppTextField(
-                value = "Olá",
-                onValueChange = {},
-                label = "Bio",
-                maxLength = 150,
-                showCharCounter = true,
-                singleLine = false,
-                maxLines = 4,
-            )
-        }
+    Column(
+        modifier = Modifier.padding(16.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp),
+    ) {
+        AppTextField(value = "", onValueChange = {}, label = "E-mail")
+        AppTextField(value = "texto preenchido", onValueChange = {}, label = "Nome")
+        AppTextField(
+            value = "",
+            onValueChange = {},
+            label = "E-mail",
+            error = "E-mail inválido"
+        )
+        AppTextField(value = "••••••", onValueChange = {}, label = "Senha", isPassword = true)
+        AppTextField(
+            value = "Olá",
+            onValueChange = {},
+            label = "Bio",
+            maxLength = 150,
+            showCharCounter = true,
+            singleLine = false,
+            maxLines = 4,
+        )
+
     }
 }

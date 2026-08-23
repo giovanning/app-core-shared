@@ -1,4 +1,4 @@
-package giovanni.projetos.com.designsystem.components
+package com.projetos.filmei.design_system.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -17,7 +17,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import giovanni.projetos.com.designsystem.theme.AppTheme
 
 // ─── Switch ───────────────────────────────────────────────────────────────────
 
@@ -81,18 +80,16 @@ fun AppSwitch(
 @Preview(showBackground = true)
 @Composable
 private fun AppToggleControlsPreview() {
-    AppTheme {
-        Column(
-            modifier = Modifier.padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(4.dp)
-        ) {
-            AppSwitch(
-                "Notificações",
-                checked = true,
-                onCheckedChange = {},
-                description = "Receba alertas em tempo real"
-            )
-            AppSwitch("Modo offline", checked = false, onCheckedChange = {})
-        }
+    Column(
+        modifier = Modifier.padding(16.dp),
+        verticalArrangement = Arrangement.spacedBy(4.dp)
+    ) {
+        AppSwitch(
+            "Notificações",
+            checked = true,
+            onCheckedChange = {},
+            description = "Receba alertas em tempo real"
+        )
+        AppSwitch("Modo offline", checked = false, onCheckedChange = {})
     }
 }
