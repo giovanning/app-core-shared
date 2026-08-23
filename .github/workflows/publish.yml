@@ -1,0 +1,35 @@
+name: Publicar AAR em GitHub Packages
+
+on:
+  push:
+    branches:
+      - main # Ou a sua branch principal
+    tags:
+      - 'v*' # Opcional: roda quando você cria uma tag como v1.0.1
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write # Importante para ter permissão de escrita no GitHub Packages
+
+    steps:
+      - name: Checkout project
+        uses: actions/checkout@v4
+
+      - name: Configura JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: 'gradle'
+
+      - name: Conece permissões de execução para o gradlew
+        run: chmod +x gradlew
+
+      - name: Publicar em GitHub Packages
+        run: ./gradlew :core:design-system:publishReleasePublicationToGitHubPackagesRepository
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+          GITHUB_ACTOR: ${{ github.ACTOR }}
