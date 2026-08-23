@@ -57,7 +57,7 @@ afterEvaluate {
         repositories {
             maven {
                 name = "GitHubPackages"
-                url = uri("https://maven.pkg.github.com/giovanning/CoreShared")
+                url = uri("https://maven.pkg.github.com/giovanning/app-core-shared")
                 credentials {
                     username = System.getenv("GITHUB_ACTOR")
                     password = System.getenv("GITHUB_TOKEN")
