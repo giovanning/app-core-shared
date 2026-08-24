@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="error_request_timeout">A conexão demorou demais. Tente novamente.</string>
+    <string name="error_no_internet">Sem conexão com a internet. Verifique a sua rede.</string>
+    <string name="error_server">Algo deu errado no servidor. Tente novamente mais tarde.</string>
+    <string name="error_serialization">Não foi possível processar a resposta do servidor.</string>
+    <string name="error_unauthorized">Sua sessão expirou. Faça login novamente.</string>
+    <string name="error_disk_full">Espaço de armazenamento insuficiente no dispositivo.</string>
+    <string name="error_unknown">Ocorreu um erro inesperado. Tente novamente.</string>
+</resources>

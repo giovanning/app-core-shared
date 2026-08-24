@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 
 /**
- * Base MVI ViewModel compartilhada pelos 10 apps.
+ * Base MVI ViewModel compartilhada pelos apps.
  *
  * Propositalmente SEM nenhuma anotação de DI (@HiltViewModel, @KoinViewModel etc).
  * Funciona igual para Koin, Hilt, ou qualquer outro framework — a anotação de DI

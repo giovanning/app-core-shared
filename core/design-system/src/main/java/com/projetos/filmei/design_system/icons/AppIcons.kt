@@ -1,6 +1,7 @@
 package com.projetos.filmei.design_system.icons
 
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.graphics.vector.path
 
 object AppIcons {
     val ArrowDropDown: ImageVector = arrow_drop_down
