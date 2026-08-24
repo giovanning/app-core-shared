@@ -8,3 +8,7 @@ plugins {
     alias(libs.plugins.kotlin.serialization) apply false
     //alias(libs.plugins.google.services) apply false
 }
+
+allprojects {
+    group = providers.gradleProperty("GROUP").get()
+}

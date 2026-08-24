@@ -1,6 +1,9 @@
 plugins {
     alias(libs.plugins.android.library)
+    id("convention.core-publish")
 }
+
+version = "1.0.0"
 
 android {
     namespace = "com.projetos.filmei.domain"
@@ -12,15 +15,13 @@ android {
 
     defaultConfig {
         minSdk = 26
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles("consumer-rules.pro")
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
     }
 
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+        }
+    }
 }
 
 dependencies {

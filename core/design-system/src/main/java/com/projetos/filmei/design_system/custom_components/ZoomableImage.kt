@@ -1,4 +1,4 @@
-package com.projetos.filmei.presentation
+package com.projetos.filmei.design_system.custom_components
 
 import android.graphics.Bitmap
 import androidx.compose.foundation.Image
