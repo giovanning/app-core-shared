@@ -25,11 +25,31 @@ jobs:
           distribution: 'temurin'
           cache: 'gradle'
 
-      - name: Conece permissões de execução para o gradlew
+      - name: Concede permissões de execução para o gradlew
         run: chmod +x gradlew
 
+      - name: Verificar se a versão já existe
+        id: check_version
+        run: |
+          # Lê a versão diretamente do gradle.properties
+          VERSION=$(grep "VERSION=" gradle.properties | cut -d'=' -f2)
+          echo "Detectada versão $VERSION"
+
+          # Verifica se o artifact 'design-system' nesta versão já existe
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
+            -u "${{ github.actor }}:${{ secrets.TOKEN }}" \
+            "https://maven.pkg.github.com/giovanning/app-core-shared/com/github/giovanning/design-system/$VERSION/design-system-$VERSION.pom")
+
+          if [ "$STATUS" = "200" ]; then
+            echo "A versão $VERSION já existe no GitHub Packages. Pulando publicação."
+            echo "skip=true" >> $GITHUB_OUTPUT
+          else
+            echo "skip=false" >> $GITHUB_OUTPUT
+          fi
+
       - name: Publicar em GitHub Packages
-        run: ./gradlew :core:design-system:publishReleasePublicationToGitHubPackagesRepository
+        if: steps.check_version.outputs.skip != 'true'
+        run: ./gradlew publishReleasePublicationToGitHubPackagesRepository
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
           GITHUB_ACTOR: ${{ github.ACTOR }}

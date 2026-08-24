@@ -4,8 +4,6 @@ plugins {
     id("convention.core-publish")
 }
 
-version = "1.0.0"
-
 android {
     namespace = "com.projetos.filmei.presentation"
     compileSdk {
